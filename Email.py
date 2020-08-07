@@ -20,7 +20,7 @@ def send_email(title):
 
     # 连接邮箱的smtp服务器，并登录
     smtp = smtplib.SMTP_SSL(host="smtp.qq.com",port="465")
-    smtp.login(user="1275470984@qq.com",password="blyejpttrumzggba")
+    smtp.login(user="1275470984@qq.com",password="rlaxoxvdubrsfjdh")
 
     # 构建一封邮箱
     msg = MIMEMultipart()
