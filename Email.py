@@ -13,7 +13,9 @@ import smtplib
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from TTime import Time_Week
 import Screenshot
+
 
 
 def send_email(title):
@@ -31,16 +33,14 @@ def send_email(title):
         <head></head>
         <body>
             <pre style="font-family:arial;margin:left;">
-            亲爱的周振全:
-                    打卡成功！！！
+                    【打卡成功】 ！！！
             <img src="cid:image1">
             </pre>
         </body>
     </html>
     """
 
-    now_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    N_H = now_time+htmlFile
+    N_H = Time_Week()+htmlFile
 
     # 创建邮文本内容
     test_msg = MIMEText(N_H,_subtype="html",_charset='utf-8')
@@ -72,4 +72,3 @@ def send_email(title):
 
     # 发送邮箱
     smtp.send_message(msg,from_addr="1275470984@qq.com",to_addrs="17764509133@163.com")
-
