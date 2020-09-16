@@ -7,10 +7,20 @@
 @Software: PyCharm
 
 """
+import os
 import Dingding
+import datetime
 from Email import send_email
 
+
 def special():
-        Dingding.Ma()
-        send_email("【下班】 打卡 ！！！")
+    # 启动appium服务器
+    os.system('startAppiumServer.bat')
+    Dingding.Ma()
+    i = datetime.datetime.now().strftime("%p")
+    S = "PM"
+    if i == S:
+        send_email("【  下班打卡  】 ")
+    else:
+        send_email("【  上班打卡  】")
 special()

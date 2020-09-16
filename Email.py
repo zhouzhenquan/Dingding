@@ -13,7 +13,7 @@ import smtplib
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from TTime import Time_Week
+from TTime import Time
 import Screenshot
 
 
@@ -31,25 +31,26 @@ def send_email(title):
     htmlFile = """\
     <html>
         <head></head>
+        <font color="#FF00FF">
+        <br>    【打卡成功】     <br/>
+        </font> 
         <body>
             <pre style="font-family:arial;margin:left;">
-                    【打卡成功】 ！！！
             <img src="cid:image1">
             </pre>
         </body>
     </html>
     """
-
-    N_H = Time_Week()+htmlFile
-
+    Text = Time().Time_Weekday() + htmlFile
     # 创建邮文本内容
-    test_msg = MIMEText(N_H,_subtype="html",_charset='utf-8')
+    test_msg = MIMEText(Text,_subtype="html",_charset='utf-8')
     # 添加到多组邮件的附件中
     msg.attach(test_msg)
 
 
     # 主题
-    msg["Subject"] = title
+    msg["Subject"] = title + Time().Time_Minute_Second_Weekday()
+
     # 发件人
     msg["From"] = "1275470984@qq.com"
     # 收件人
